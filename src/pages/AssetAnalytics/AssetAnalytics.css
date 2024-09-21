@@ -1,0 +1,13 @@
+.dashboard-card {
+  margin-bottom: 20px;
+}
+
+.ant-card-head-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ant-table-thead > tr > th {
+  background-color: #f0f2f5;
+  font-weight: bold;
+}

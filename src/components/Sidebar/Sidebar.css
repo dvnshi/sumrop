@@ -1,0 +1,19 @@
+/* Sidebar.css */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px; /* Adjust for navbar height */
+  width: 250px;
+  height: calc(100vh - 60px);
+  background-color: #001529;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar .ant-menu {
+  background: none;
+}
+
+.sidebar .ant-menu-item {
+  color: #fff;
+}

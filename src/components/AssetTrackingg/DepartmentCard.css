@@ -1,0 +1,30 @@
+
+.department-card {
+    background-color:#3D52A0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+  }
+  
+  .department-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .department-card .card-body {
+    background-color: #3D52A0;
+    padding: 20px;
+  }
+  
+  .department-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color:#EDE8F5;
+  }
+  
+  .department-card .card-text {
+    font-size: 1rem;
+    color: #EDE8F5;
+  }
+  

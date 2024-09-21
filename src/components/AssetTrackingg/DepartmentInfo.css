@@ -1,0 +1,28 @@
+.department-info {
+    background-color: #3D52A0;
+    color:#EDE8F5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .unit-card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .unit-card .card-body {
+    padding: 20px;
+    background-color: #3D52A0;
+  }
+  
+  .unit-card .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:#EDE8F5;
+  }
+  
+  .unit-card .card-text {
+    font-size: 1rem;
+    color: #EDE8F5;
+  }

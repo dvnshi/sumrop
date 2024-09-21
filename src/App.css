@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height:100vh;
+  background-color: #222;
+  color: #fff;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+p{
+  font:Sans-serif;
+  font-weight: 900;
+  font-size:30px;
+  margin:20px;
+}
+
+.SignInOption{
+  display:flex;
+  justify-content:center;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3D53A0;
+  color: #EDE8F5;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ADBBDA;
+  color:#222;
+}
+
+
+
+
+
+
+/* App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px; /* Adjust to match Navbar height */
+  width: 250px;
+  height: calc(100vh - 60px);
+  background-color: #001529;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar .ant-menu {
+  background: none;
+}
+
+.sidebar .ant-menu-item {
+  color: #fff;
+}
+
+.toast {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: #f5222d;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.toast.show {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.toast {
+  opacity: 0;
+}
