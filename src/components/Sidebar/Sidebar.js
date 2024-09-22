@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../../assets/logo.png'; // Update with the SUMROP logo
+import logoo from '../../assets/logoo.png'; // Update with the SUMROP logo
 import './Sidebar.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -40,7 +40,7 @@ const Sidebar = () => {
   return (
     <SidebarContainer>
       <SidebarTitle>
-        <img className='logo-img' src={logo} alt="SUMROP Logo" height={160} width={160}/>
+        <img className='logoo-img' src={logoo} alt="SUMROP Logo" height={160} width={160}/>
       </SidebarTitle>
 
       {/* Dropdown for Analytics */}

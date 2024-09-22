@@ -7,8 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css'; // Import your custom CSS file
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import logo from '../../assets/logo.png'
+
 
 const NavbarComponent = () => {
   const location = useLocation(); // Get current location
