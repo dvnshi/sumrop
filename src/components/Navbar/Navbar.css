@@ -5,11 +5,14 @@
 
 .custom-navbar .navbar-brand {
   color: white !important; /* Set the text color for the brand */
+ 
 }
 
 .custom-navbar .nav-link {
   color: white !important; /* Set the text color for nav links */
-  margin: 1rem;
+  /* margin: 0.2rem; */
+   margin: 0 1.2rem;
+ 
 }
 
 .custom-navbar .nav-link.active {
@@ -20,6 +23,7 @@
 /* Optional: Add hover effect */
 .custom-navbar .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.3) !important;
+  margin: 0;
 }
 
 .custom-navbar{
@@ -35,6 +39,9 @@
   top: 0;
   left: 250px; 
   width: calc(100% - 250px); 
+  
+
+ 
   
 }
 

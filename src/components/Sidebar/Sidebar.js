@@ -44,7 +44,7 @@ const Sidebar = () => {
       </SidebarTitle>
 
       {/* Dropdown for Analytics */}
-      <Dropdown>
+      {/* <Dropdown>
         <Dropdown.Toggle variant="info" id="dropdown-basic">
           Urban Analytics
         </Dropdown.Toggle>
@@ -55,7 +55,7 @@ const Sidebar = () => {
           <Dropdown.Item as={Link} to="/logistics-data">Logistics Data</Dropdown.Item>
           <Dropdown.Item as={Link} to="/maintenance-reports">Maintenance Reports</Dropdown.Item>
         </Dropdown.Menu>
-      </Dropdown>
+      </Dropdown> */}
 
       {/* Sidebar Items */}
       <SidebarItem to="/traffic-management">Traffic Management</SidebarItem>

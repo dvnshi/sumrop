@@ -33,18 +33,14 @@ const NavbarComponent = () => {
           </Nav.Link>
           <Nav.Link
             as={Link}
-            to="/query-board"
-            className={location.pathname === '/query-board' ? 'active' : ''}
+            to="/anamoly-detection"
+            className={location.pathname === '/anamoly-detection' ? 'active' : ''}
           >
-            Query Board
+            Anamoly Detection
           </Nav.Link>
-          <Nav.Link
-            as={Link}
-            to="/scheme"
-            className={location.pathname === '/scheme' ? 'active' : ''}
-          >
-            Schemes
-          </Nav.Link>
+
+          
+
           <Nav.Link
             as={Link}
             to="/report"
@@ -54,27 +50,35 @@ const NavbarComponent = () => {
           </Nav.Link>
           <Nav.Link
             as={Link}
-            to="/track-report"
-            className={location.pathname === '/track-report' ? 'active' : ''}
+            to="/predictive-maintenance"
+            className={location.pathname === '/predictive-maintenance' ? 'active' : ''}
           >
-            Track Report Status
+            Predictive Maintenance
           </Nav.Link>
           <Nav.Link
             as={Link}
-            to="/rewards"
-            className={location.pathname === '/rewards' ? 'active' : ''}
+            to="/job-portal-page"
+            className={location.pathname === '/job-portal-page' ? 'active' : ''}
           >
-            Rewards
+            Job Portal
           </Nav.Link>
 
             
-          <Nav.Link
+            <Nav.Link
+            as={Link}
+            to="/scheme"
+            className={location.pathname === '/scheme' ? 'active' : ''}
+          >
+            Schemes
+          </Nav.Link>
+          
+          {/* <Nav.Link
             as={Link}
             to="/login-as-admin"
             className={location.pathname === '/login-as-admin' ? 'active' : ''}
           >
             Login as ADMIN
-          </Nav.Link>
+          </Nav.Link> */}
  
 
           {/* <Nav.Link

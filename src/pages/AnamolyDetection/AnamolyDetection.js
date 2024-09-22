@@ -1,93 +1,110 @@
-// src/pages/AnamolyDetection/AnamolyDetection.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
-import './AnamolyDetection.css'
-const AnomalyDetection = () => {
-  // Sample data for line chart
-  const data = [
-    { name: 'Jan', asset1: 400, asset2: 240, asset3: 240 },
-    { name: 'Feb', asset1: 300, asset2: 139, asset3: 221 },
-    { name: 'Mar', asset1: 200, asset2: 980, asset3: 229 },
-    { name: 'Apr', asset1: 278, asset2: 390, asset3: 200 },
-    { name: 'May', asset1: 189, asset2: 480, asset3: 218 },
-    { name: 'Jun', asset1: 239, asset2: 380, asset3: 250 },
-    { name: 'Jul', asset1: 349, asset2: 430, asset3: 210 },
-  ];
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
-  // Sample data for anomaly details
-  const anomalyData = [
-    {
-      key: '1',
-      department: 'Public Works',
-      assetId: 'PW123',
-      problem: 'High fluctuation in usage',
-      solution: 'Inspect asset',
-      budget: 'Rs 500000',
-    },
-    {
-      key: '2',
-      department: 'Transportation',
-      assetId: 'T456',
-      problem: 'Sudden drop in performance',
-      solution: 'Replace component',
-      budget: 'Rs 1500000',
-    },
-    {
-      key: '3',
-      department: 'Parks and Recreation',
-      assetId: 'PR789',
-      problem: 'Irregular activity pattern',
-      solution: 'Recalibrate sensors',
-      budget: 'Rs 50000',
-    },
-  ];
+// Fix for default marker icon in production build
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-icon.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-shadow.png',
+});
+
+const AnomalyDetection = () => {
+  const [selectedInfrastructure, setSelectedInfrastructure] = useState('roads');
+  const [timeSeriesData, setTimeSeriesData] = useState([]);
+  const [anomalies, setAnomalies] = useState([]);
+
+  useEffect(() => {
+    // Simulating data fetch and anomaly detection
+    const generateData = () => {
+      const data = [];
+      const anomaliesDetected = [];
+      for (let i = 0; i < 30; i++) {
+        const value = Math.random() * 100;
+        data.push({ day: i + 1, value });
+        if (value > 80 || value < 20) {
+          anomaliesDetected.push({
+            id: i,
+            name: `${selectedInfrastructure.charAt(0).toUpperCase() + selectedInfrastructure.slice(1)} Anomaly ${i + 1}`,
+            description: `Unusual ${value > 80 ? 'high' : 'low'} reading detected`,
+            lat: 28.6139 + (Math.random() - 0.5) * 0.1,
+            lng: 77.2090 + (Math.random() - 0.5) * 0.1,
+          });
+        }
+      }
+      setTimeSeriesData(data);
+      setAnomalies(anomaliesDetected);
+    };
+
+    generateData();
+  }, [selectedInfrastructure]);
+
+  const handleInfrastructureChange = (event) => {
+    setSelectedInfrastructure(event.target.value);
+  };
 
   return (
-    <div>
-      <Typography variant="h4" gutterBottom>
-        Anomaly Detection
-      </Typography>
-      <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="asset1" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="asset2" stroke="#82ca9d" />
-          <Line type="monotone" dataKey="asset3" stroke="#ffc658" />
-        </LineChart>
-      </ResponsiveContainer>
-      <Typography variant="h6" gutterBottom>
-        Assets with Anomalies
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Department</TableCell>
-              <TableCell>Asset ID</TableCell>
-              <TableCell>Problem Detected</TableCell>
-              <TableCell>Predicted Solution</TableCell>
-              <TableCell>Budget</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {anomalyData.map((row) => (
-              <TableRow key={row.key}>
-                <TableCell>{row.department}</TableCell>
-                <TableCell>{row.assetId}</TableCell>
-                <TableCell>{row.problem}</TableCell>
-                <TableCell>{row.solution}</TableCell>
-                <TableCell>{row.budget}</TableCell>
-              </TableRow>
+    <Card className="w-full max-w-4xl mx-auto">
+      <CardHeader title="Anomaly Detection" />
+      <CardContent>
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="infrastructure-select-label">Select Infrastructure</InputLabel>
+          <Select
+            labelId="infrastructure-select-label"
+            value={selectedInfrastructure}
+            onChange={handleInfrastructureChange}
+            label="Select Infrastructure"
+          >
+            <MenuItem value="roads">Roads</MenuItem>
+            <MenuItem value="bridges">Bridges</MenuItem>
+            <MenuItem value="pipelines">Pipelines</MenuItem>
+            <MenuItem value="powerlines">Power Lines</MenuItem>
+          </Select>
+        </FormControl>
+
+        <h3 className="text-xl font-semibold mb-4">Performance Metrics</h3>
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={timeSeriesData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="day" label={{ value: 'Day', position: 'insideBottomRight', offset: -10 }} />
+            <YAxis label={{ value: 'Performance', angle: -90, position: 'insideLeft' }} />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+          </LineChart>
+        </ResponsiveContainer>
+
+        <h3 className="text-xl font-semibold my-4">Detected Anomalies</h3>
+        <div style={{ height: '400px', width: '100%' }}>
+          <MapContainer center={[28.6139, 77.2090]} zoom={11} style={{ height: '100%', width: '100%' }}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            {anomalies.map((anomaly) => (
+              <Marker key={anomaly.id} position={[anomaly.lat, anomaly.lng]}>
+                <Popup>
+                  <strong>{anomaly.name}</strong><br />
+                  {anomaly.description}
+                </Popup>
+              </Marker>
             ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+          </MapContainer>
+        </div>
+
+        <div className="mt-4">
+          <h3 className="text-xl font-semibold">Analysis</h3>
+          <p className="mt-2">
+            The anomaly detection system has identified {anomalies.length} potential issues in the {selectedInfrastructure} infrastructure.
+            These anomalies are marked on the map above. Early detection allows for proactive maintenance and can prevent major failures.
+          </p>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
