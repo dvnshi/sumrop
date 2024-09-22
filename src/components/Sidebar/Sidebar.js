@@ -1,16 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../../assets/city-assets.png'
-import './Sidebar.css'
-import Home from '../../pages/Home/Home';
-import Rewards from '../../pages/Rewards/Rewards';
+import logo from '../../assets/logo.png'; // Update with the SUMROP logo
+import './Sidebar.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const SidebarContainer = styled.div`
   height: 100vh; // Full height of the viewport
   width: 250px;
-  background-color: #2c3e50;
+  background-color: #1a242f; // Darker background for a professional feel
   color: #ecf0f1;
   display: flex;
   flex-direction: column;
@@ -42,27 +40,30 @@ const Sidebar = () => {
   return (
     <SidebarContainer>
       <SidebarTitle>
-        <img className='logo-img' src={logo} alt="Logo" height={160} width={160}/>
+        <img className='logo-img' src={logo} alt="SUMROP Logo" height={160} width={160}/>
       </SidebarTitle>
 
+      {/* Dropdown for Analytics */}
       <Dropdown>
-      <Dropdown.Toggle variant="warning" id="dropdown-basic">
-        Asset Analytics
-      </Dropdown.Toggle>
+        <Dropdown.Toggle variant="info" id="dropdown-basic">
+          Urban Analytics
+        </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item to="/asset-performance">Asset Performance</Dropdown.Item>
-        <Dropdown.Item to="/asset-utilization" >Asset Utilization</Dropdown.Item>
-        <Dropdown.Item href="/sensor-data">Sensor Data</Dropdown.Item>
-        <Dropdown.Item href="/maintenance-logs">Maintenance Logs</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+        <Dropdown.Menu>
+          <Dropdown.Item as={Link} to="/traffic-analytics">Traffic Analytics</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/resource-usage-analytics">Resource Usage Analytics</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/logistics-data">Logistics Data</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/maintenance-reports">Maintenance Reports</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
 
-      <SidebarItem to="/asset-analytics">Asset Analytics</SidebarItem>
-      <SidebarItem to="/asset-management">Asset Management</SidebarItem>
-      <SidebarItem to="/asset-tracking">Asset Tracking</SidebarItem>
-      <SidebarItem to="/anamoly-detection">Anomaly Detection</SidebarItem>
-      <SidebarItem to="/future-idea">Future Idea</SidebarItem>
+      {/* Sidebar Items */}
+      <SidebarItem to="/traffic-management">Traffic Management</SidebarItem>
+      <SidebarItem to="/urban-logistics">Urban Logistics</SidebarItem>
+      <SidebarItem to="/resource-allocation">Resource Allocation</SidebarItem>
+      <SidebarItem to="/citizen-engagement">Citizen Engagement</SidebarItem>
+      <SidebarItem to="/data-analytics">Data Analytics</SidebarItem>
+      {/* <SidebarItem to="/reports">Reports</SidebarItem> */}
     </SidebarContainer>
   );
 };
