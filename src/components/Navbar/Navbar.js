@@ -63,15 +63,15 @@ const NavbarComponent = () => {
             Job Portal
           </Nav.Link>
 
-            
+{/*             
             <Nav.Link
             as={Link}
             to="/scheme"
             className={location.pathname === '/scheme' ? 'active' : ''}
           >
             Schemes
-          </Nav.Link>
-          
+          </Nav.Link> */}
+
           {/* <Nav.Link
             as={Link}
             to="/login-as-admin"
